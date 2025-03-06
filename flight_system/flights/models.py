@@ -37,7 +37,7 @@ class Schedule(models.Model):
 class Booking(models.Model):
     flight = models.ForeignKey(Flight, on_delete=models.CASCADE, related_name="bookings")
     passenger_name = models.CharField(max_length=100)
-    booking_date = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return (f"Passenger: {self.passenger_name} | "

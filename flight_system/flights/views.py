@@ -96,3 +96,9 @@ class ScheduleViewSet(viewsets.ModelViewSet):
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+
+    @action(detail=True, methods=['post'])
+    def get_flight_id(self, request, pk=None):
+        booking = self.get_object()
+        flight_id = booking.flight.flight_id  # Get the related flight_id
+        return Response({'flight_id': flight_id}, status=status.HTTP_200_OK)

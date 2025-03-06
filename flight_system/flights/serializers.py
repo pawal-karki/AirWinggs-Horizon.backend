@@ -7,6 +7,7 @@ class FlightSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class BookingSerializer(serializers.ModelSerializer):
+    flight_id = serializers.CharField(source='flight.flight_id', read_only=True)
     class Meta:
         model = Booking
         fields = '__all__'
